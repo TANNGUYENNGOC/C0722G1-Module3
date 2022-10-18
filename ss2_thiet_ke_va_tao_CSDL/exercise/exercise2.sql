@@ -1,4 +1,5 @@
-CREATE DATABASE quan_li_ban_hang;
+DROP DATABASE IF EXISTS quan_li_ban_hang;
+CREATE DATABASE IF NOT EXISTS quan_li_ban_hang;
 USE quan_li_ban_hang;
 
 CREATE TABLE customer (
@@ -15,6 +16,8 @@ CREATE TABLE `order` (
     FOREIGN KEY (c_id)
         REFERENCES customer (c_id)
 );
+ALTER TABLE `order` DROP o_date;
+ALTER TABLE `order` ADD COLUMN o_date DATE AFTER c_id;
 
 CREATE TABLE product (
     p_id INT PRIMARY KEY,
@@ -25,10 +28,11 @@ CREATE TABLE product (
 CREATE TABLE order_detail (
     o_id INT,
     p_id INT,
-    od_qty NVARCHAR(200),
+    od_qty INT,
     PRIMARY KEY (o_id , p_id),
     FOREIGN KEY (o_id)
         REFERENCES `order` (o_id),
     FOREIGN KEY (p_id)
         REFERENCES product (p_id)
 );
+DROP TABLE order_detail;
