@@ -31,6 +31,7 @@ FROM order_detail JOIN product ON order_detail.p_id = product.p_id JOIN `order` 
 JOIN customer ON customer.c_id = `order`.c_id
 WHERE od_qty >= 1;
 
+-- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 SELECT*
 FROM customer LEFT JOIN `order` ON customer.c_id = `order`.c_id
 WHERE `order`.c_id IS NULL;
