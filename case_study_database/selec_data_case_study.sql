@@ -297,11 +297,12 @@ CREATE VIEW v_nhan_vien AS
             JOIN
         hop_dong ON nhan_vien.ma_nhan_vien = hop_dong.ma_nhan_vien
     WHERE
-        (nhan_vien.dia_chi LIKE '%Đà Nẵng%'
+        (nhan_vien.dia_chi LIKE '%Liên Chiểu%'
             AND MONTH(hop_dong.ngay_lam_hop_dong) = 4
             AND YEAR(ngay_lam_hop_dong) = 2021)
     GROUP BY hop_dong.ma_nhan_vien
     HAVING so_hop_dong_da_lam >= 1;
+    DROP VIEW v_nhan_vien;
     SELECT*FROM v_nhan_vien;
     
 -- 22. Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Đà Nẵng” đối với tất cả các nhân viên
@@ -352,22 +353,53 @@ DELIMITER ;
 DROP TRIGGER tr_xoa_hop_dong;
 DELETE FROM hop_dong WHERE hop_dong.ma_hop_dong = 18;
 
--- 26.	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng, cần kiểm tra xem
--- thời gian cập nhật có phù hợp hay không, với quy tắc sau: Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, nếu dữ liệu không hợp lệ thì in ra thông báo “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
--- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
-
 		-- Bảng ghi log
 CREATE TABLE `history`(
 id INT auto_increment PRIMARY KEY,
 tong_hop_dong int
 );
+-- 26.	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng, cần kiểm tra xem
+-- thời gian cập nhật có phù hợp hay không, với quy tắc sau: Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, nếu dữ liệu không hợp lệ thì in ra thông báo “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+DELIMITER //
+CREATE TRIGGER tr_cap_nhat_hop_dong  BEFORE UPDATE ON hop_dong FOR EACH ROW
+BEGIN
+IF datediff(new.ngay_ket_thuc, OLD.ngay_lam_hop_dong) <=2 THEN SIGNAL SQLSTATE '45000' 
+SET MESSAGE_TEXT = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày';
+END IF;
+END//
+DELIMITER ;
+UPDATE hop_dong
+SET hop_dong.ngay_ket_thuc = '2022-10-11'
+WHERE hop_dong.ma_hop_dong = 15;
 
+-- 27.	Tạo Function thực hiện yêu cầu sau:
+-- a.	Tạo Function func_dem_dich_vu: Đếm các dịch vụ đã được sử dụng với tổng tiền là > 2.000.000 VNĐ.
+-- b.	Tạo Function func_tinh_thoi_gian_hop_dong: Tính khoảng thời gian dài nhất tính từ lúc bắt đầu làm hợp đồng đến
+	-- lúc kết thúc hợp đồng mà khách hàng đã thực hiện thuê dịch vụ (lưu ý chỉ xét các khoảng thời gian dựa vào từng lần
+	-- làm hợp đồng thuê dịch vụ, không xét trên toàn bộ các lần làm hợp đồng). Mã của khách hàng được truyền vào như là
+	-- tham số của function này.
+CREATE VIEW v_dich_vu AS
+SELECT hop_dong.ma_dich_vu, dich_vu.chi_phi_thue, SUM(dich_vu.chi_phi_thue) AS tong_chi_phi_thue, COUNT(dich_vu.ma_dich_vu) AS so_luong
+FROM hop_dong JOIN dich_vu ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+GROUP BY dich_vu.ma_dich_vu
+HAVING tong_chi_phi_thue > 2000000;
+SELECT*FROM v_dich_vu;
 
-
-
-
-
-
+DELIMITER //
+CREATE FUNCTION func_dem_dich_vu()
+RETURNS INT deterministic
+BEGIN
+DECLARE dem INT;
+-- SET dem = (SELECT v_dich_vu.so_luong FROM v_dich_vu);
+SELECT hop_dong.ma_dich_vu, dich_vu.chi_phi_thue, SUM(dich_vu.chi_phi_thue) AS tong_chi_phi_thue, COUNT(dich_vu.ma_dich_vu) AS so_luong
+FROM hop_dong JOIN dich_vu ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+GROUP BY dich_vu.ma_dich_vu
+HAVING tong_chi_phi_thue > 2000000;
+RETURN 0;
+END//
+DELIMITER ;
+DROP FUNCTION func_dem_dich_vu;
 
  
  
