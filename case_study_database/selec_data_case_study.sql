@@ -284,8 +284,83 @@ SELECT nhan_vien.ma_nhan_vien,nhan_vien.ho_ten,nhan_vien.email,nhan_vien.so_dien
 UNION
 SELECT khach_hang.ma_khach_hang,khach_hang.ho_ten,khach_hang.email,khach_hang.so_dien_thoai,khach_hang.ngay_sinh,khach_hang.dia_chi FROM khach_hang;
 
+-- 21.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Đà Nẵng”
+-- và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là  tháng 4 năm 2021.
+CREATE VIEW v_nhan_vien AS
+    SELECT 
+        hop_dong.ma_nhan_vien,
+        nhan_vien.ho_ten,
+        SUM(hop_dong.ma_nhan_vien) AS so_hop_dong_da_lam,
+        nhan_vien.dia_chi
+    FROM
+        nhan_vien
+            JOIN
+        hop_dong ON nhan_vien.ma_nhan_vien = hop_dong.ma_nhan_vien
+    WHERE
+        (nhan_vien.dia_chi LIKE '%Đà Nẵng%'
+            AND MONTH(hop_dong.ngay_lam_hop_dong) = 4
+            AND YEAR(ngay_lam_hop_dong) = 2021)
+    GROUP BY hop_dong.ma_nhan_vien
+    HAVING so_hop_dong_da_lam >= 1;
+    SELECT*FROM v_nhan_vien;
+    
+-- 22. Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Đà Nẵng” đối với tất cả các nhân viên
+-- được nhìn thấy bởi khung nhìn này.
+set sql_safe_updates = 0;
+UPDATE nhan_vien 
+SET 
+    nhan_vien.dia_chi = 'Liên Chiểu'
+WHERE
+    nhan_vien.dia_chi IN (SELECT 
+            v_nhan_vien.dia_chi
+        FROM
+            v_nhan_vien);
+           set sql_safe_updates = 1;
+-- 23.	Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó 
+-- với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+DELIMITER //
+CREATE PROCEDURE sp_xoa_khach_hang(IN ma_KH INT)
+BEGIN
+DELETE FROM khach_hang WHERE khach_hang.ma_khach_hang = ma_KH; 
+END //
+DELIMITER ;
+CALL sp_xoa_khach_hang(8);
+SELECT*FROM khach_hang;
 
+-- 24.	Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với yêu cầu
+--  sp_them_moi_hop_dong phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung, với nguyên tắc không được trùng 
+-- khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+DELIMITER //
+CREATE PROCEDURE sp_them_moi_hop_dong(IN ma_HD INT, IN ngay_lam_HD DATETIME, ngay_ket_thuc DATETIME, tien_dat_coc DOUBLE, ma_nv INT, ma_kh INT, ma_dv INT)
+BEGIN
+INSERT INTO hop_dong VALUES (ma_HD,ngay_lam_HD,ngay_ket_thuc,tien_dat_coc,ma_nv,ma_kh,ma_dv);
+END //
+DELIMITER ;
+SELECT*FROM hop_dong;
+CALL sp_them_moi_hop_dong(14,'2022-10-10','2022-12-12',25000,7,10,2);
 
+-- 25. Tạo Trigger có tên tr_xoa_hop_dong khi xóa bản ghi trong bảng hop_dong thì hiển thị tổng số 
+-- lượng bản ghi còn lại có trong bảng hop_dong ra giao diện console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+DELIMITER //
+CREATE TRIGGER tr_xoa_hop_dong AFTER DELETE ON hop_dong FOR EACH ROW
+BEGIN 
+INSERT INTO `history` (tong_hop_dong)
+SELECT count(hop_dong.ma_hop_dong) FROM  `hop_dong`;
+END//
+DELIMITER ;
+DROP TRIGGER tr_xoa_hop_dong;
+DELETE FROM hop_dong WHERE hop_dong.ma_hop_dong = 18;
+
+-- 26.	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng, cần kiểm tra xem
+-- thời gian cập nhật có phù hợp hay không, với quy tắc sau: Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, nếu dữ liệu không hợp lệ thì in ra thông báo “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+
+		-- Bảng ghi log
+CREATE TABLE `history`(
+id INT auto_increment PRIMARY KEY,
+tong_hop_dong int
+);
 
 
 
