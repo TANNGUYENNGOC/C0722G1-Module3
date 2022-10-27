@@ -1,0 +1,19 @@
+.boxmodel{
+    width: 800px;
+    border: 10px;
+    border-color: chartreuse aqua blue blueviolet;
+    border-style: solid;
+    /*padding: 10px;*/
+    margin: auto;
+}
+
+.boxmodel p{
+    border: 3px dotted darkred;
+    padding: 10px;
+}
+
+.boxmodel1{
+    /*margin-bottom: 20px;*/
+    margin-right: 5px;
+    margin-left: 5px;
+}

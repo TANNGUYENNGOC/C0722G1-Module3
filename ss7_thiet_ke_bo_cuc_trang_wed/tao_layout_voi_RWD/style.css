@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.row{
+    /*cho phép thẻ div (col) nổi lên trên*/
+    display: flex;
+    /*Các thẻ div (col)  không đủ chỗ chứa trên 1 hàng thì rớt xuống*/
+    /*flex-wrap: wrap;*/
+}
+.container{
+    font-family: Arial;
+    background-color: #828080;
+    height: 587px;
+}
+.menu {
+    background-color: black;
+}
+
+li{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    width: 8%;
+    height: 50px;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer ;
+}
+
+.row > li:hover {
+    background-color: red;
+}
+.giuatrang{
+    height: 80%;
+    background-color: #0f6674;
+}
+.left{
+    background-color: #cdcdcd;
+    justify-content: center;
+    /*align-items: center;*/
+    display: flex;
+}
+.left li {
+    width: 100%;
+    color: #2929fa;
+}
+.content{
+    background-color: #F5F5F5;
+    justify-content: center;
+    /*align-items: center;*/
+    display: flex;
+}
+
+.right {
+    justify-content: center;
+    /*align-items: center;*/
+    display: flex;
+    background-color: #cdcdcd;
+}
+.right li{
+    margin-top: 30%;
+    width: 140px;
+    border-radius: 5px;
+    border: solid #575454 2px;
+    color: black;
+    background-color: #F5F5F5;
+}
+.welcome{
+    margin-top: 3%;
+
+    /*background-color: #004C00;*/
+    width: 92%;
+    height: 50%;
+}
+.welcome > .gachchan {
+    border-bottom: 3px solid #D3D3D3;
+}
+.footter {
+    background-color: #575454;
+    height: 12%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.footter p{
+    height: 12%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #F5F5F5;
+}
+.login {
+    margin-left: 52%;
+}

@@ -1,0 +1,38 @@
+
+a {
+    text-decoration: none;
+    color: white;
+}
+.menu > ul > li {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.menu  ul  li {
+    position: relative;
+    font-family: Arial;
+    color: white;
+    list-style: none;
+    cursor: pointer;
+    background-color: black;
+    width: 120px;
+    height: 35px;
+}
+
+
+ul li:hover {
+    background-color: red;
+}
+ul ul {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+}
+
+ul li:hover ul{
+    visibility:visible;
+    left: 80px;
+}
+.menu ul li ul li {
+    margin-left: 3px;
+}

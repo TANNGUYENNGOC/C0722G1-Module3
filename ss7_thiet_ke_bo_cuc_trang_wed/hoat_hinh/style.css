@@ -1,0 +1,92 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/*Màn hình máy tính pc và tivi smart*/
+@media only screen and (min-width:1241px){
+    .col-l-1 {width: 8.33333%;}
+    .col-l-2 {width: 16.66667%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33333%;}
+    .col-l-5 {width: 41.66667%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33333%;}
+    .col-l-8 {width: 66.66667%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33333%;}
+    .col-l-11 {width: 91.66667%;}
+    .col-l-12 {width: 100%;}
+}
+.container{
+    width: 96%;
+    margin: auto;
+    background-color: white;
+    height: 850px;
+}
+img {
+    width: 7%;
+    height: 100%;
+}
+.row {
+    display: flex;
+}
+.header{
+    margin-bottom: 5px;
+    height: 7%;
+    background-color: #CDCDCD;
+}
+.menu {
+    margin-bottom: 5px;
+    height: 5%;
+    background-color: #CDCDCD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu li {
+    cursor: pointer;
+    /*padding: 0 10px 0 10px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    background-color: #CDCDCD;
+    /*border: 2px solid black;*/
+    margin: 10px;
+    height: 100%;
+}
+.menu li:hover {
+    background-color: #575454;
+    color: white;
+}
+.giuatrang{
+    display: flex;
+    background-color: white;
+    height: 80%;
+}
+.left{
+    height: 100%;
+    background-color: #D3D3D3;
+    margin-right: 25px;
+}
+.left div{
+    height: 30%;
+    margin-bottom: 20px;
+}
+.left div iframe {
+    height: 100%;
+    width: 100%;
+}
+.right{
+    height: 100%;
+    background-color: #CDCDCD;
+}
+.footter    {
+    margin-top: 5px;
+    height: 8%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #CDCDCD;
+}
