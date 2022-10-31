@@ -1,50 +1,73 @@
-body{
-    font-family: Arial  ;
-}
-.menu{
-    height: 30px;
+* {
     padding: 0;
     margin: 0;
-    background-color: black;
-    border: 1px solid #CDCDCD;
 }
 
-#menu ul, #menu li{
-    padding:0;
-    margin:0;
+#header {
+    background-color: #000000;
+    height: 45px;
+    width: 100%;
 }
-#menu li{
-    position: relative;
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding:0;
-}
-#menu li a {
-    width: 100px;
-    height: 30px;
-    display: block;
-    text-decoration: none;
+
+li {
+    cursor: pointer;
     text-align: center;
-    line-height: 30px;
-    background-color: black;
-    color: white;
+    list-style: none;
+    width: 80px;
+    height: 100%;
+    line-height: 45px;
 }
-#menu ul ul li a {
-    width: 200px;
+.sub-nav-1 > li  {
     text-align: left;
-    padding-left: 10px;
-
 }
-#menu li a:hover{
+.sub-nav-2 > li  {
+    text-align: left;
+}
+
+
+.nav {
+    display: flex;
+    position: relative;
+}
+
+#header ul li:hover ul {
+    /* hiện menu con */
+    visibility: visible;
+}
+
+.sub-nav-1,
+.sub-nav-2 {
+    position: absolute;
+    /*ẩn menu con*/
+    visibility: hidden;
+    /*background-color: red;*/
+    width: 250px;
+}
+
+.sub-nav-2 li,
+.sub-nav-1 li{
+    padding: 0 15px;
+}
+
+.sub-nav-1 li {
+    width: 175px;
+    background-color: black;
+}
+
+.sub-nav-2 li {
+    width: 130px;
+    background-color: black;
+}
+
+ul > li:hover{
     background-color: red;
 }
-#menu ul ul{
-    position: absolute;
-    top: 30px;
-    left: 15px;
-    visibility: hidden;
+.sub-nav-1 li a {
+    display: block;
 }
-#menu ul li:hover ul{
-    visibility: visible;
+
+a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
 }
