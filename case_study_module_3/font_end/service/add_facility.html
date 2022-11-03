@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="container-fluid vh-100">
@@ -37,7 +39,8 @@
         <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
             <ul class="nav  justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" style="color: white" aria-current="page" href="http://localhost:63342/font_end/index.html?_ijt=vk483426ctog7jnbu08n9rh78n">Home</a>
+                    <a class="nav-link active" style="color: white" aria-current="page"
+                       href="http://localhost:63342/font_end/index.html?_ijt=h2m45sa76s23id5kgintmqo1a7">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white">Employee</a>
@@ -46,7 +49,7 @@
                     <a class="nav-link" href="#" style="color: white">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white">Service</a>
+                    <a class="nav-link" href="http://localhost:63342/font_end/service/index.html?_ijt=s8gbt172efd8ddbjvhop7rue7c" style="color: white">Service</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white">Contract</a>
@@ -63,27 +66,83 @@
             </form>
         </div>
     </div>
-    <div class="row text-center d-flex" style="height: 10%;color: #0d6056">
-        <div class="col-xl-10">
-            <h1>FACILITY</h1>
+<!--    <div class="vh-100"></div>-->
+    <section class="vh-100 mt-2">
+        <div class="mask d-flex align-items-center h-100 ">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">ADD Facility</h2>
 
-        </div>
-        <div class="col-xl-2">
-            <h1>
-                <a class="btn btn-primary" href="http://localhost:63342/font_end/service/add_facility.html?_ijt=rnjgifq09q0g34ljb0njvaljvu" role="button">ADD Facility</a>
-            </h1>
-        </div>
-    </div>
+                                <form>
 
-    
-        </div>
-    </div>
-    <div class="row" style="background-color: #0d6056;height: 10%">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="ID*" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Name*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Area*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Cost*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Max people*" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Rent type id*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Facility type id*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Standard room*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Description other convenience*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Pool area*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Number of floors*"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Facility free*"/>
+                                    </div>
 
-    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    </div>
+
+<!--                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"-->
+<!--                                                                                                            class="fw-bold text-body"><u>Login here</u></a></p>-->
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</div>
+</div>
+
 </div>
 
 </body>
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
 </html>
