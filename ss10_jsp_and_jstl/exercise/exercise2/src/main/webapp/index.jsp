@@ -12,10 +12,21 @@
   </head>
   <body>
   <h1>Simple Calculator</h1>
-  <form action="">
+  <form action="/calculator" method="post">
     <p>First operand:</p>
-    <input type="text">
-    <p></p>
+    <input name="first_operand" type="text">
+    <p>Operator:</p>
+    <select name="operator" id="">
+      <option value="+">addition</option>
+      <option value="-">subtraction</option>
+      <option value="*">multiplication</option>
+      <option value="/">division</option>
+    </select>
+    <p>Second operand</p>
+    <input name="second_operand" type="text">
+    <br>
+    <br>
+    <button>Submit</button>
   </form>
   </body>
 </html>

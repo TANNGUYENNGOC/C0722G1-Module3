@@ -8,13 +8,13 @@ import java.io.IOException;
 @WebServlet(name = "ProductDiscountCalculatorServlet", value = "/display-discount")
 public class ProductDiscountCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String product_description = request.getParameter("describe");
-        double list_price = Double.parseDouble(request.getParameter("list_price"));
-        double discount_price = Double.parseDouble(request.getParameter("discount_percent"));
-        double result = list_price * discount_price *0.01;
-        request.setAttribute("describe",product_description);
-        request.setAttribute("list_price",list_price);
-        request.setAttribute("discount_percent",discount_price);
+        String productDescription = request.getParameter("describe");
+        double listPrice = Double.parseDouble(request.getParameter("listPrice"));
+        double discountPrice = Double.parseDouble(request.getParameter("discountPercent"));
+        double result = listPrice * discountPrice *0.01;
+        request.setAttribute("describe",productDescription);
+        request.setAttribute("listPrice",listPrice);
+        request.setAttribute("discountPercent",discountPrice);
         request.setAttribute("result",result);
         request.getRequestDispatcher("result.jsp").forward(request,response);
     }
