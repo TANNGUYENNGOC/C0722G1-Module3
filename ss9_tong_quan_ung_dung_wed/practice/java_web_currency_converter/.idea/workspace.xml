@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a5eddae-b947-4530-b545-de6144ea5663" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../case_study_module_3/font_end/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../case_study_module_3/font_end/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CaseStudyDatabase/3.2. Web/~$-DN Case Study for JSP_Servlet_v1.1.docx" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study_module_3/font_end/service/add_facility.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study_module_3/font_end/service/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study_module_3/font_end/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study_module_3/font_end/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -18,8 +22,18 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProjectId" id="2Gz4AbFHjoHuShlcMTkXpJkr4ot" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -28,7 +42,20 @@
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a5eddae-b947-4530-b545-de6144ea5663" name="Default Changelist" comment="" />
+      <created>1667377935368</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667377935368</updated>
+      <workItem from="1667377936495" duration="247000" />
+      <workItem from="1667397664221" duration="31000" />
+      <workItem from="1667446577511" duration="136000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="121" y="0" key="#Project_Structure" timestamp="1667371611215">
@@ -83,9 +110,9 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="845" height="166" key="GridCell.Tab.2.right/0.0.1280.689@0.0.1280.689" timestamp="1667371791772" />
-    <state x="91" y="0" key="new project wizard" timestamp="1667371789735">
+    <state x="91" y="0" key="new project wizard" timestamp="1667446712677">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1667371789735" />
+    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1667446712677" />
   </component>
 </project>

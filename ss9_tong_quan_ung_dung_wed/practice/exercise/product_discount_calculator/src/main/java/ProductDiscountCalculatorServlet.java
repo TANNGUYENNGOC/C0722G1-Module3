@@ -8,14 +8,14 @@ import java.io.IOException;
 @WebServlet(name = "ProductDiscountCalculatorServlet", value = "/display-discount")
 public class ProductDiscountCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String product_description = request.getParameter("mota");
-        double list_price = Double.parseDouble(request.getParameter("n1"));
-        double discount_price = Double.parseDouble(request.getParameter("n2"));
+        String product_description = request.getParameter("describe");
+        double list_price = Double.parseDouble(request.getParameter("list_price"));
+        double discount_price = Double.parseDouble(request.getParameter("discount_percent"));
         double result = list_price * discount_price *0.01;
-        request.setAttribute("mt",product_description);
-        request.setAttribute("gny",list_price);
-        request.setAttribute("tlck",discount_price);
-        request.setAttribute("chiet_khau",result);
+        request.setAttribute("describe",product_description);
+        request.setAttribute("list_price",list_price);
+        request.setAttribute("discount_percent",discount_price);
+        request.setAttribute("result",result);
         request.getRequestDispatcher("result.jsp").forward(request,response);
     }
 

@@ -12,9 +12,9 @@
   </head>
   <body>
   <form action="/display-discount" method="post">
-    <input  name="mota" type="text" placeholder="Product Description">
-    <input name="n1" type="text" placeholder="List Price">
-    <input name="n2" type="text" placeholder="Discount Percent">
+    <input  name="describe" type="text" placeholder="Product Description">
+    <input name="list_price" type="text" placeholder="List Price">
+    <input name="discount_percent" type="text" placeholder="Discount Percent">
     <button type="submit">Submit</button>
   </form>
   </body>
