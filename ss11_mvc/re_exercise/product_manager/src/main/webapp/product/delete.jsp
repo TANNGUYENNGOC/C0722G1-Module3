@@ -14,12 +14,12 @@
 <h1>BẠn có muốn xóa ??</h1>
 <a href="product/list.jsp">Quay lại list</a>
 <form action="/product?action=delete" method="post">
-    <pre>ID:            <input type="hidden" name="iD" value="${product.getiD()}"></pre>
+    <pre>ID:            <input type="hidden" name="id" value="${product.getiD()}"></pre>
     <pre>Name product:  <input type="text" name="nameProduct" value="${product.getNameProduct()}"readonly></pre>
     <pre>Price product:  <input type="text" name="priceProduct" value="${product.getPriceProduct()}"readonly></pre>
     <pre>Description product: <input type="text" name="descriptionProduct" value="${product.getDescriptionProduct()}"readonly></pre>
     <pre>Manufacturer:       <input type="text" name="manufacturer" value="${product.getManufacturer()}" readonly></pre>
-    <pre><button>Save</button></pre>
+    <pre><button>Delete</button></pre>
 </form>
 </body>
 </html>

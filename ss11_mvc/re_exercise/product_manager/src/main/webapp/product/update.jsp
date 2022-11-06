@@ -13,7 +13,7 @@
 <body>
 <a href="/product">Quay lại list</a>
 <form action="/product?action=update" method="post">
-    <pre>ID:            <input type="hidden" name="iD" value="${product.getiD()}"></pre>
+    <pre>ID:            <input type="hidden" name="id" value="${product.getiD()}"></pre>
     <pre>Name product:  <input type="text" name="nameProduct" value="${product.getNameProduct()}"></pre>
     <pre>Price product:  <input type="text" name="priceProduct" value="${product.getPriceProduct()}"></pre>
     <pre>Description product: <input type="text" name="descriptionProduct" value="${product.getDescriptionProduct()}"></pre>

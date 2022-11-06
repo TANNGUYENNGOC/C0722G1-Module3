@@ -26,6 +26,7 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteProduct(request, response);
+                break;
             case "update":
                 updateProduct(request, response);
                 break;
@@ -33,7 +34,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("iD"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String nameProduct = request.getParameter("nameProduct");
         double priceProduct = Double.parseDouble(request.getParameter("priceProduct"));
         String descriptionProduct = request.getParameter("descriptionProduct");
@@ -46,7 +47,7 @@ public class ProductServlet extends HttpServlet {
         productService.update(product, id);
         request.setAttribute("product",product);
         try {
-            request.getRequestDispatcher("/product/update.jsp").forward(request,response);
+            request.getRequestDispatcher("product/update.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -55,7 +56,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("iD"));
+        int id = Integer.parseInt(request.getParameter("id"));
         productService.delete(id);
         try {
             response.sendRedirect("/product");
@@ -110,6 +111,7 @@ public class ProductServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findByID(id);
+
         request.setAttribute("product", product);
 
         try {

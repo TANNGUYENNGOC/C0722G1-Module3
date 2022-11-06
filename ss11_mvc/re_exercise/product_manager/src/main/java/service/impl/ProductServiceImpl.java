@@ -8,7 +8,7 @@ import service.IProductService;
 import java.util.List;
 
 public class ProductServiceImpl implements IProductService {
-    IProductRepository productRepository = new ProductRepository();
+     private IProductRepository productRepository = new ProductRepository();
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
