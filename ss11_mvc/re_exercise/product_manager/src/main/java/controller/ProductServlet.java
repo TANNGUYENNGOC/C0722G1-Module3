@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
@@ -30,6 +31,22 @@ public class ProductServlet extends HttpServlet {
             case "update":
                 updateProduct(request, response);
                 break;
+            case "search":
+                searchProduct(request,response);
+                break;
+        }
+    }
+
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<Product> productList =  productService.searchName(name);
+        request.setAttribute("productList",productList);
+        try {
+            request.getRequestDispatcher("product/search.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
