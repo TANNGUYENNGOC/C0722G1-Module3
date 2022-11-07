@@ -36,4 +36,9 @@ private IUserRepository userRepository = new UserRepository();
         return userRepository.deleteUser(id);
     }
 
+    @Override
+    public List<User> searchCountry(String country) {
+        return userRepository.searchCountry(country);
+    }
+
 }

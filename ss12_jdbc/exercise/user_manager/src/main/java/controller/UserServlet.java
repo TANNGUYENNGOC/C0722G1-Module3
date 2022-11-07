@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
@@ -22,6 +23,9 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "search":
+                searchCountryUser(request,response);
+                break;
             case "delete":
                 deleteUser(request,response);
                 break;
@@ -31,6 +35,28 @@ public class UserServlet extends HttpServlet {
             case "edit":
                 editUser(request, response);
                 break;
+        }
+    }
+    private void searchCountryUser(HttpServletRequest request, HttpServletResponse response) {
+        String country = request.getParameter("country");
+        List<User> userList = userService.searchCountry(country);
+        request.setAttribute("userList",userList);
+        try {
+            request.getRequestDispatcher("user/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void showList(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("userList", userService.findAll());
+        try {
+            request.getRequestDispatcher("user/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -101,10 +127,14 @@ public class UserServlet extends HttpServlet {
             case "edit":
                 showFormEdit(request, response);
                 break;
+
             default:
                 showList(request, response);
         }
     }
+
+
+
 
     private void showFormDelete(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -142,14 +172,5 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void showList(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("userList", userService.findAll());
-        try {
-            request.getRequestDispatcher("user/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

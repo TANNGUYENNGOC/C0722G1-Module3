@@ -11,5 +11,6 @@ public interface IUserService {
     boolean updateUser(User user, int id);
     User selectUser(int id);
     boolean deleteUser(int id) throws SQLException;
+    List<User> searchCountry(String count);
 
 }

@@ -12,4 +12,5 @@ public interface IUserRepository {
     User selectUser(int id);
 
     public boolean deleteUser(int id) throws SQLException;
+    List<User> searchCountry(String count);
 }

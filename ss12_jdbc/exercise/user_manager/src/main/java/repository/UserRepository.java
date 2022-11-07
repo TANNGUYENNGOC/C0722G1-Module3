@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository implements IUserRepository {
-    private final String SELECT_ALL = "select*from users;";
+    private final String SELECT_ALL = "select*from users ORDER BY id;";
     private final String INSERT_STUDENT = "insert into users(name, email, country) values(?,?,?);";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
+    private static final String SELECT_COUNTRY = "SELECT * FROM users WHERE country = ? ORDER BY `name`;";
     @Override
     public List<User> findAll() {
         List<User> userList = new ArrayList<>();
@@ -99,6 +100,28 @@ public class UserRepository implements IUserRepository {
         preparedStatement.setInt(1,id);
         rowDeleted = preparedStatement.executeUpdate()>0;
         return rowDeleted;
+    }
+
+    @Override
+    public List<User> searchCountry(String count) {
+        List<User> userList = new ArrayList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SELECT_COUNTRY);
+            ps.setString(1,count);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                User user = new User(id,name,email,country);
+                userList.add(user);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return userList;
     }
 
 }
