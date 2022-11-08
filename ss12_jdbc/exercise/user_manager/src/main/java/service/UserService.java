@@ -41,4 +41,9 @@ private IUserRepository userRepository = new UserRepository();
         return userRepository.searchCountry(country);
     }
 
+    @Override
+    public List<User> sortName() {
+        return userRepository.sortName();
+    }
+
 }

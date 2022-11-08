@@ -22,6 +22,10 @@
             <input type="text" name="country">
             <input type="submit" value="search name">
         </form></h2>
+    <h2>
+        <form action="/user?action=sort" method="post">
+            <input type="submit" value="Sort name">
+        </form></h2>
 <div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>

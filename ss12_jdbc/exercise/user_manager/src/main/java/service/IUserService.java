@@ -12,5 +12,5 @@ public interface IUserService {
     User selectUser(int id);
     boolean deleteUser(int id) throws SQLException;
     List<User> searchCountry(String count);
-
+    List<User> sortName();
 }

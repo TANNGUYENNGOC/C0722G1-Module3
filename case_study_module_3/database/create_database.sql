@@ -1,6 +1,6 @@
 CREATE DATABASE furama_resort_database;
 USE furama_resort_database;
--- 
+
 CREATE TABLE `position` (
 	id  INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(45)
@@ -70,6 +70,8 @@ CREATE TABLE customer(
     address VARCHAR(45),
     FOREIGN KEY(customer_type_id) REFERENCES customer_type(id)
 );
+INSERT INTO `customer` VALUE (1,2,'Nguyễn Ngọc Tấn','2001-12-12',1,'2','0339593516','nguyentantai1610@gmail.com','Quảng Ngãi');
+
 -- facility_type
 CREATE TABLE facility_type(
 	id	INT PRIMARY KEY AUTO_INCREMENT,

@@ -23,6 +23,9 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "sort":
+                shortNameUser(request,response);
+                break;
             case "search":
                 searchCountryUser(request,response);
                 break;
@@ -37,6 +40,18 @@ public class UserServlet extends HttpServlet {
                 break;
         }
     }
+
+    private void shortNameUser(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("userList", userService.sortName());
+        try {
+            request.getRequestDispatcher("user/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void searchCountryUser(HttpServletRequest request, HttpServletResponse response) {
         String country = request.getParameter("country");
         List<User> userList = userService.searchCountry(country);
