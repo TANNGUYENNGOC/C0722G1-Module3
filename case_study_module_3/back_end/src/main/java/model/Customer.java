@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer {
     private int id;
@@ -8,7 +8,7 @@ public class Customer {
     private String name;
     private Date dateOfBirth;
     private boolean gender;
-    private int idCard;
+    private String idCard;
     private String phoneNumber;
     private String email;
     private String address;
@@ -16,8 +16,19 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, int customerTypeId, String name, Date dateOfBirth, boolean gender, int idCard, String phoneNumber, String email, String address) {
+    public Customer(int id, int customerTypeId, String name, Date dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address) {
         this.id = id;
+        this.customerTypeId = customerTypeId;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+
+    public Customer(int customerTypeId, String name, Date dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address) {
         this.customerTypeId = customerTypeId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -68,11 +79,11 @@ public class Customer {
         this.gender = gender;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 

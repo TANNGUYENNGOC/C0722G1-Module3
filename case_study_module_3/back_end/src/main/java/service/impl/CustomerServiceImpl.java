@@ -15,27 +15,27 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public boolean add(Customer user) {
-        return false;
+    public boolean add(Customer customer) {
+        return customerRepository.add(customer);
     }
 
     @Override
-    public boolean updateUser(Customer user, int id) {
-        return false;
+    public boolean updateCustomer(Customer customer, int id) {
+        return customerRepository.updateCustomer(customer,id);
     }
 
     @Override
-    public Customer selectUser(int id) {
-        return null;
+    public Customer selectCustomer(int id) {
+        return customerRepository.selectCustomer(id);
     }
 
     @Override
-    public boolean deleteUser(int id) {
-        return false;
+    public boolean deleteCustomer(int id) {
+        return customerRepository.deleteCustomer(id);
     }
 
     @Override
-    public List<Customer> searchCountry(String count) {
-        return null;
+    public List<Customer> searchCustomer(String nameSearch) {
+        return customerRepository.searchCustomer(nameSearch);
     }
 }

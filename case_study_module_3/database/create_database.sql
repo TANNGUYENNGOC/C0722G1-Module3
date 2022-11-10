@@ -70,6 +70,9 @@ CREATE TABLE customer(
     address VARCHAR(45),
     FOREIGN KEY(customer_type_id) REFERENCES customer_type(id)
 );
+
+SELECT*from customer;
+
 INSERT INTO `customer` VALUE (1,2,'Nguyễn Ngọc Tấn','2001-12-12',1,'2','0339593516','nguyentantai1610@gmail.com','Quảng Ngãi');
 
 -- facility_type

@@ -60,13 +60,20 @@
             </ul>
         </div>
         <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
-            <form class="d-flex" role="search">
-                <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
-                       aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"
-                        style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
-                </button>
-            </form>
+<%--            <form class="d-flex" role="search">--%>
+<%--                <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"--%>
+<%--                       aria-label="Search">--%>
+<%--                <button class="btn btn-outline-success" type="submit"--%>
+<%--                        style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search--%>
+<%--                </button>--%>
+<%--            </form>--%>
+    <form class="d-flex" role="search" action="/customer?action=search" method="post">
+        <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
+               aria-label="Search" name="search">
+        <button  class="btn btn-outline-success" type="submit"
+                 style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
+        </button>
+    </form>
         </div>
     </div>
     <div class="row" style="height: 70%">

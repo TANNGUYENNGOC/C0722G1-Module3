@@ -12,6 +12,8 @@
     <title>List Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container-fluid vh-100">
@@ -40,17 +42,17 @@
 
         </div>
     </div>
-    <div class="row sticky-top" style="height: 10%">
+    <div class="row sticky-top" style="height: 10%;margin-bottom: 10px" >
         <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
             <ul class="nav  justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" style="color: white" aria-current="page" href="http://localhost:63342/font_end/index.html?_ijt=h2m45sa76s23id5kgintmqo1a7">Home</a>
+                    <a class="nav-link active" style="color: white" aria-current="page" href="furama.jsp">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:63342/font_end/employee/index.html?_ijt=htp4mcrmci0qvb9al37iu25j86" style="color: white">Employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white">Customer</a>
+                    <a class="nav-link" href="/customer" style="color: white">Customer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white">Service</a>
@@ -61,10 +63,10 @@
             </ul>
         </div>
         <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" action="/customer?action=search" method="post">
                 <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
-                       aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"
+                       aria-label="Search" name="search">
+                <button  class="btn btn-outline-success" type="submit"
                         style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
                 </button>
             </form>
@@ -72,92 +74,105 @@
     </div>
     <div class="row text-center d-flex" style="height: 10%;color: #0d6056">
         <div class="col-xl-10">
-            <h1>LIST EMPLOYEE</h1>
+            <h1>LIST CUSTOMER</h1>
 
         </div>
         <div class="col-xl-2">
             <h1>
-                <a class="btn btn-primary" href="http://localhost:63342/font_end/employee/add_employee.html?_ijt=9k9tr5bsmnkrs9o30i47ivqv48" role="button">ADD Employee</a>
             </h1>
         </div>
     </div>
 
     <div class="row" style="height: 70%">
         <div class="col-xl-12">
-            <table class="table">
+            <table id="tableCustomer" class="table table-striped table-bordered" style="width: 100%">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Customer type id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Date of birth</th>
-                    <th scope="col">Id card</th>
-                    <th scope="col">Salary</th>
-                    <th scope="col">Phone Number</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">ID card</th>
+                    <th scope="col">Phone number</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Position ID</th>
-                    <th scope="col">Education degree id</th>
-                    <th scope="col">Division id</th>
-                    <th scope="col">User name</th>
+                    <th  scope="col">Address</th>
+                    <th  scope="col" style="text-align: center">
+                        <a class="btn btn-primary" href="/customer?action=add" role="button">ADD Customer</a>
+                    </th>
+
                 </tr>
                 </thead>
                 <tbody>
 <c:forEach var="customer" items="${customerList}">
-                <tr>
-                    <td>${customer.getId()}</td>
-                    <td>${customer.getCustomerTypeId()}</td>
-                    <td>${customer.getName()}</td>
-                    <td>${customer.getDateOfBirth()}</td>
-                    <td>${customer.isGender()}</td>
-                    <td>${customer.getIdCard()}</td>
-                    <td>${customer.getPhoneNumber()}</td>
-                    <td>${customer.getEmail()}</td>
-                    <td>${customer.getAddress()}</td>
-                    <td><button type="button" class="btn btn-outline-success">Update</button></td>
-                    <td><button type="button" class="btn btn-outline-success">Delete</button></td>
-                </tr>
-</c:forEach>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td><button type="button" class="btn btn-outline-success">Update</button></td>
-                    <td><button type="button" class="btn btn-outline-success">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td><button type="button" class="btn btn-outline-success">Update</button></td>
-                    <td><button type="button" class="btn btn-outline-success">Delete</button></td>
-                </tr>
+                    <tr>
+                        <td>${customer.getId()}</td>
+                        <td>${customer.getCustomerTypeId()}</td>
+                        <td>${customer.getName()}</td>
+                        <td>${customer.getDateOfBirth()}</td>
+                        <td>${customer.isGender()}</td>
+                        <td>${customer.getIdCard()}</td>
+                        <td>${customer.getPhoneNumber()}</td>
+                        <td>${customer.getEmail()}</td>
+                        <td>${customer.getAddress()}</td>
+                        <td><button type="button" class="btn btn-outline-success"><a style="text-decoration: none;color: green" href="/customer?action=update&id=${customer.getId()}">UPDATE</a></button></td>
+                        <td><button onclick="modalDelete('${customer.getId()}','${customer.getName()}')" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE</button></td>
+                    </tr>
+    </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row" style="background-color: #0d6056;height: 10%">
 
+</div>
+<!-- delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <input hidden type="text" id="idCustomer">
+               <span>Bạn có muốn xóa:  </span><span style="color: red" id="name"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/customer?action=delete" method="get">
+                    <input type="text" hidden id="id" name="id" value="delete">
+                    <button type="submit" class="btn btn-primary">Xóa</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+<%--<div class="row" style="background-color: #0d6056;height: 10%">--%>
+
+<%--</div>--%>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+
+
+</script>
+<script>
+    function modalDelete(id,name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+
+
+<script src="/jquery/jquery-3.5.1.min.js"></script>
+<script src="/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/datatables/js/dataTables.bootstrap5.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 3
+        });
+    });
+</script>
 </html>
