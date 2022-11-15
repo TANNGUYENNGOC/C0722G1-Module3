@@ -131,7 +131,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <input hidden type="text" id="idCustomer">
-               <span>Bạn có muốn xóa:  </span><span style="color: red" id="name"></span>
+               <span>Bạn có muốn xóa:  </span>
+                <span style="color: red" id="name"></span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -155,7 +156,7 @@
 </script>
 <script>
     function modalDelete(id,name) {
-        document.getElementById("id").value = id;
+        document.getElementById("idCustomer").value = id;
         document.getElementById("name").innerText = name;
     }
 </script>

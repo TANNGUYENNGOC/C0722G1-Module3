@@ -104,9 +104,7 @@ public class CustomerServlet extends HttpServlet {
             case "delete":
                 deleteCustomer(request,response);
                 break;
-//            case "delete":
-//                showFormDelete(request,response);
-//                break;
+
             default:
                 showListCustomer(request, response);
                 break;
@@ -130,18 +128,18 @@ public class CustomerServlet extends HttpServlet {
         customerService.deleteCustomer(id);
         showListCustomer(request,response);
     }
-//    private void showFormDelete(HttpServletRequest request, HttpServletResponse response) {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Customer customer = customerService.selectCustomer(id);
-//        request.setAttribute("customer",customer);
-//        try {
-//            request.getRequestDispatcher("customer/delete.jsp").forward(request,response);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void showFormDelete(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerService.selectCustomer(id);
+        request.setAttribute("customer",customer);
+        try {
+            request.getRequestDispatcher("customer/delete.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showFormAdd(HttpServletRequest request, HttpServletResponse response) {
         try {

@@ -72,7 +72,7 @@ CREATE TABLE customer(
 );
 
 SELECT*from customer;
-
+SELECT*FROM customer WHERE name LIKE '% Nhi';
 INSERT INTO `customer` VALUE (1,2,'Nguyễn Ngọc Tấn','2001-12-12',1,'2','0339593516','nguyentantai1610@gmail.com','Quảng Ngãi');
 
 -- facility_type

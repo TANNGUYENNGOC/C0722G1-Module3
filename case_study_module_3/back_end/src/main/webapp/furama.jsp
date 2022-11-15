@@ -52,7 +52,7 @@
                     <a class="nav-link" href="/customer" style="color: white">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:63342/font_end/service/index.html?_ijt=s8gbt172efd8ddbjvhop7rue7c" style="color: white">Service</a>
+                    <a class="nav-link" href="/facility" style="color: white">Service</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white">Contract</a>
